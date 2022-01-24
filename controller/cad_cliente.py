@@ -38,14 +38,14 @@ class CadCliente(QWidget):
                         else:
                             cliente_dao.edit(Cliente(self.moab.id, nome, tel, end, cpf_format))
                     else:
-                        QMessageBox.about(self, "Número de Telefone e CPF inválidos. O requisito mínimo de digitos não foi atingido.")
+                        QMessageBox.about(self, "ERRO!", "Número de Telefone e CPF inválidos. O requisito mínimo de digitos não foi atingido.")
                 else:
-                    QMessageBox.about(self, "Número de Telefone e CPF inválidos.")
+                    QMessageBox.about(self, "ERRO!", "Número de Telefone e CPF inválidos.")
             else:
-                QMessageBox.about(self, "Insira todas as informações.")
+                QMessageBox.about(self, "ERRO!", "Insira todas as informações.")
         
         except Exception as e:
-            QMessageBox.about(self, "Insira todas as informações.")
+            QMessageBox.about(self, "ERRO", "Insira todas as informações.")
             print(e)
 
     def delete(self):
