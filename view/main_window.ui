@@ -53,7 +53,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="home">
+          <widget class="QPushButton" name="home_btn">
            <property name="minimumSize">
             <size>
              <width>45</width>
@@ -72,7 +72,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="list">
+          <widget class="QPushButton" name="list_btn">
            <property name="minimumSize">
             <size>
              <width>45</width>
@@ -115,7 +115,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QStackedWidget" name="painel_widget">
       <widget class="QWidget" name="page"/>
       <widget class="QWidget" name="page_2"/>
      </widget>

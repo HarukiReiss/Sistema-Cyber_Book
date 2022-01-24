@@ -76,6 +76,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QPushButton" name="excluir">
+       <property name="text">
+        <string>Excluir</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -91,7 +98,7 @@
      <item>
       <widget class="QPushButton" name="save">
        <property name="text">
-        <string>Cadastrar</string>
+        <string>Salvar</string>
        </property>
       </widget>
      </item>
