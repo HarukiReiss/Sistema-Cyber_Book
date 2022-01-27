@@ -1,11 +1,12 @@
-
+from qt_core import *
 class Cliente():
-    def __init__(self, id, nome, tel, end, cpf):
+    def __init__(self, id, nome, telefone, endereco, cpf):
         self.id = id
         self.nome = nome
-        self.tel = tel
-        self.end = end
+        self.telefone = telefone
+        self.endereco = endereco
         self.cpf = cpf
 
-    def getSheet(self):
-        return [self.nome, self.tel, self.end, self.cpf]
+    def getCostumer(self):
+        return [self.nome, self.telefone, self.endereco, self.cpf]
+

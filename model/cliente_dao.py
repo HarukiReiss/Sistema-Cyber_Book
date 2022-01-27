@@ -3,26 +3,25 @@ from model import database
 from model.cliente import Cliente
 
 list = []
-
 def add(cliente):
     list.append(cliente)
     try:
         conn = database.connect()
-        cursor = conn.cursor
-        sql = """INSERT INTO Cliente (nome, tel, end, cpf) VALUES (?, ?, ?, ?)"""
-        cursor.execute(sql, cliente.getSheet())
+        cursor = conn.cursor()
+        sql = """INSERT INTO Cliente (nome, telefone, endereco, cpf) VALUES (?, ?, ?, ?)"""
+        cursor.execute(sql, cliente.getCostumer())
         conn.commit()
     except Exception as e:
-        print (e)
+        print(e)
     finally:
-        conn.close
+        conn.close()
 
 def edit(cliente):
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """UPDATE Cliente SET nome=?, tel=?, end=?, cpf=? WHERE id=?"""
-        l = cliente.getSheet()
+        sql = """UPDATE Cliente SET nome=?, telefone=?, endereco=?, cpf=? WHERE id=?"""
+        l = cliente.getCostumer()
         l.append(cliente.id)
         cursor.execute(sql, l)
         conn.commit()
@@ -31,7 +30,7 @@ def edit(cliente):
     finally:
         conn.close()
 
-def remove(id):
+def delete(id):
     try:
         conn = database.connect()
         cursor = conn.cursor() 
@@ -44,7 +43,7 @@ def remove(id):
         conn.close()
 
 def selectAll():
-    list = []
+    lis = []
     try:
         conn = database.connect()
         cursor = conn.cursor()
@@ -53,9 +52,9 @@ def selectAll():
         result = cursor.fetchall()
         for cliente in result:
             new = Cliente(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4])
-            list.append(new)
+            lis.append(new)
     except Exception as e:
         print(e)
     finally:
         conn.close()
-    return list
+    return lis

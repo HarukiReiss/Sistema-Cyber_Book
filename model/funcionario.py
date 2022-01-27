@@ -1,10 +1,12 @@
-
+from qt_core import *
 class Funcionario():
     def __init__(self, id, nome, senha, email):
         self.id = id
-        self.nome = nome
+        self.nome= nome
         self.senha = senha
         self.email = email
-
-    def getUser(self):
+    
+    def getWorker(self):
         return [self.nome, self.senha, self.email]
+        
+        

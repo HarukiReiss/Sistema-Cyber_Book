@@ -1,10 +1,15 @@
+from http.client import ACCEPTED
+from sys import argv
 from qt_core import *
 from controller.main_window import MainWindow
+from controller.login import Login
 
-os.environ['XDG_SESSION_TYPE'] = 'Wayland'
 
 app = QApplication(sys.argv)
-win = MainWindow()
-win.show()
+app.setStyle('Fusion')
+if (QDialog.Accepted == True):
+    win = Login()
+    win.show()
 sys.exit(app.exec())
+
 
