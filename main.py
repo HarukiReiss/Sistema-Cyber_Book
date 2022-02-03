@@ -10,6 +10,5 @@ app.setStyle('Fusion')
 if (QDialog.Accepted == True):
     win = Login()
     win.show()
+    pass
 sys.exit(app.exec())
-
-

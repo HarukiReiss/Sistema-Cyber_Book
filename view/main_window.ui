@@ -226,7 +226,7 @@ color: rgb(255, 255, 255);</string>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="venda_btn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -243,7 +243,7 @@ color: rgb(255, 255, 255);</string>
            <string notr="true">background-color: rgb(170, 85, 255);</string>
           </property>
           <property name="text">
-           <string/>
+           <string>Nova Venda</string>
           </property>
          </widget>
         </item>

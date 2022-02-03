@@ -26,7 +26,7 @@ class Login(QDialog):
             if user == '' and key == '':
                 QMessageBox.about(self, "Erro!", "Insira os dados.")
             else:
-                login = fun_dao.log(user, key)
+                login = fun_dao.logon(user, key)
                 if login == None:
                     QMessageBox.about(self, "Erro!", "Usuário ou senha incorretos.")
                 else:
@@ -49,7 +49,7 @@ class Login(QDialog):
             valid = QDoubleValidator(0, 100000000, 0)
             if valid.validate(senha, 14)[0] == QValidator.Acceptable:
                 if len(str(senha)) >= 8:
-                    fun_dao.reg(Funcionario(None, user, senha, email))
+                    fun_dao.regis(Funcionario(None, user, senha, email))
                     self.cad_btn.hide()
                     self.regis_btn.show()
                     self.enter_btn.show()

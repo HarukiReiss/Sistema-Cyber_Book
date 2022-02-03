@@ -33,7 +33,7 @@ class ClientePage(QWidget):
 
 
     def remover(self):
-        cliente_dao.delete(self.c_select.id)
+        cliente_dao.remove(self.c_select.id)
         self.remove_btn.hide()
         self.cancel_edit_btn.hide()
         self.load()
@@ -56,11 +56,11 @@ class ClientePage(QWidget):
             if nome != '' and telefone != '' and endereco != '' and cpf != '':
                 if valid.validate(telefone, 14)[0] == QValidator.Acceptable and valid.validate(cpf, 14)[0] == QValidator.Acceptable:
                     if len(str(telefone)) == 11 and len(str(cpf)) == 11:
-                        if self.c_at == None:
+                        if self.c_select == None:
                             cliente_dao.add(Cliente(None, nome, telefone, endereco, f_cpf))
                             self.load()
                         else:
-                            cliente_dao.edit(Cliente(self.c_at.id, nome, telefone, endereco, f_cpf))
+                            cliente_dao.edit(Cliente(self.c_select.id, nome, telefone, endereco, f_cpf))
                             self.load()
                     else:
                         QMessageBox.about(self, "Erro!", "O número de telefone e CPF inválidos.")
@@ -94,9 +94,9 @@ class ClientePage(QWidget):
         d3 = cpf_c[8:11]
         d4 = cpf_c[12:]
         f_cpf = '{}{}{}{}'.format(d1, d2, d3, d4)
-        tel_c = str(self.c_select.telefone)
+        tel_c = str(self.c_select.tel)
         self.nome.setText(self.c_select.nome)
-        self.telefone.setText(tel_c)
+        self.tel.setText(tel_c)
         self.endereco.setText(self.c_select.endereco)
         self.cpf.setText(f_cpf)
 
@@ -114,7 +114,7 @@ class ClientePage(QWidget):
 
         id = QTableWidgetItem(str(cliente.id))
         nome = QTableWidgetItem(cliente.nome)
-        telefone = QTableWidgetItem(str(cliente.telefone))
+        telefone = QTableWidgetItem(str(cliente.tel))
         endereco = QTableWidgetItem(cliente.endereco)
         cpf = QTableWidgetItem(cliente.cpf)
 

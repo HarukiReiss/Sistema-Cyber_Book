@@ -2,14 +2,15 @@ import sqlite3
 from model import database
 from model.cliente import Cliente
 
-list = []
+lc = []
+
 def add(cliente):
-    list.append(cliente)
+    lc.append(cliente)
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """INSERT INTO Cliente (nome, telefone, endereco, cpf) VALUES (?, ?, ?, ?)"""
-        cursor.execute(sql, cliente.getCostumer())
+        sql = """INSERT INTO Cliente (nome, tel, endereco, cpf) VALUES (?, ?, ?, ?)"""
+        cursor.execute(sql, cliente.getData())
         conn.commit()
     except Exception as e:
         print(e)
@@ -20,8 +21,8 @@ def edit(cliente):
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """UPDATE Cliente SET nome=?, telefone=?, endereco=?, cpf=? WHERE id=?"""
-        l = cliente.getCostumer()
+        sql = """UPDATE Cliente SET nome=?, tel=?, endereco=?, cpf=? WHERE id=?"""
+        l = cliente.getData()
         l.append(cliente.id)
         cursor.execute(sql, l)
         conn.commit()
@@ -30,7 +31,7 @@ def edit(cliente):
     finally:
         conn.close()
 
-def delete(id):
+def remove(id):
     try:
         conn = database.connect()
         cursor = conn.cursor() 
@@ -43,7 +44,7 @@ def delete(id):
         conn.close()
 
 def selectAll():
-    lis = []
+    li = []
     try:
         conn = database.connect()
         cursor = conn.cursor()
@@ -52,9 +53,9 @@ def selectAll():
         result = cursor.fetchall()
         for cliente in result:
             new = Cliente(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4])
-            lis.append(new)
+            li.append(new)
     except Exception as e:
         print(e)
     finally:
         conn.close()
-    return lis
+    return li
