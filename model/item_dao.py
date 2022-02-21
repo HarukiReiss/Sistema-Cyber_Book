@@ -25,7 +25,7 @@ def remove(id):
     finally:
         conn.close()
 
-def selectHistoric():
+def selectSale():
     try:
         conn = database.connect()
         cursor = conn.cursor()
@@ -54,3 +54,33 @@ def selectAll():
     finally:
         conn.close()
     return lb
+
+def removeNull():
+    try:
+        conn = database.connect()
+        cursor = conn.cursor()
+        sql = """DELETE FROM SaleBook WHERE id_sale is NULL"""
+        cursor.execute(sql)
+        conn.commit()
+    except Exception as t:
+        print(t)
+    finally:
+        conn.close()
+
+def selectOne(id):
+    deck = []
+    try:
+        conn = database.connect()
+        cursor = conn.cursor()
+        sql = """SELECT * FROM SaleBook WHERE id_sale=?"""
+        cursor.execute(sql, [id])
+        result = cursor.fetchall()
+        for item in result:
+            sl = Livro(item[0], None, item[1], item[2], item[3], item[4])
+            deck.append(sl)
+    except Exception as u:
+        print(u)
+    finally:
+        conn.close()
+    return deck
+

@@ -38,7 +38,7 @@ color: rgb(255, 255, 255);</string>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>11</x>
@@ -89,26 +89,28 @@ color: rgb(255, 255, 255);</string>
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="data_edit">
+           <widget class="QLabel" name="day">
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+             <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
-            <property name="calendarPopup">
-             <bool>true</bool>
+            <property name="text">
+             <string>99/99/9999</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="data">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string>99:99:99</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>11</x>
@@ -132,7 +134,17 @@ color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="sale_cliente"/>
+           <widget class="QComboBox" name="sale_cliente">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label">
@@ -192,7 +204,17 @@ color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="book_box"/>
+           <widget class="QComboBox" name="book_box">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(10, 10, 10);</string>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -279,6 +301,16 @@ color: rgb(0, 0, 0);</string>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QPushButton" name="finish_sale">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(170, 85, 255);</string>
+            </property>
+            <property name="text">
+             <string>Finalizar Inserção</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QPushButton" name="cancel_sale">
             <property name="styleSheet">
@@ -396,7 +428,7 @@ color: rgb(0, 0, 0);</string>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>11</x>
@@ -441,13 +473,13 @@ color: rgb(0, 0, 0);</string>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>10</x>
            <y>0</y>
            <width>821</width>
-           <height>71</height>
+           <height>77</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -500,22 +532,21 @@ color: rgb(0, 0, 0);</string>
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>10</height>
+                <height>25</height>
                </size>
               </property>
               <property name="font">
                <font>
-                <pointsize>14</pointsize>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
                </font>
-              </property>
-              <property name="text">
-               <string/>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <property name="readOnly">
-               <bool>true</bool>
+              <property name="placeholderText">
+               <string>R$00,00</string>
               </property>
              </widget>
             </item>

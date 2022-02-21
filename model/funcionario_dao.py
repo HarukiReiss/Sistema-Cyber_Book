@@ -27,3 +27,16 @@ def logon(user, key):
     finally:
         conn.close()
     return result
+
+def selectOne(user):
+    try:
+        conn = database.connect()
+        cursor = conn.cursor()
+        sql = """SELECT * FROM Funcionario WHERE nickname= '{}';""".format(user)
+        cursor.execute(sql)
+        result = cursor.fetchone()
+    except Exception as c:
+        print(c)
+    finally:
+        conn.close()
+    return result

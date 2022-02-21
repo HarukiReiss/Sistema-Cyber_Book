@@ -32,7 +32,7 @@ class Login(QDialog):
                 else:
                     QMessageBox.about(self, "Acesso aceito!", "Login bem sucedido.")
                     logged = user
-                    self.mainWindow = MainWindow(logged)
+                    self.mainWindow = MainWindow(logged, self)
                     self.mainWindow.show()
                     
                     self.hide()
@@ -47,22 +47,29 @@ class Login(QDialog):
             email = self.email.text()
             
             valid = QDoubleValidator(0, 100000000, 0)
-            if valid.validate(senha, 14)[0] == QValidator.Acceptable:
-                if len(str(senha)) >= 8:
-                    fun_dao.regis(Funcionario(None, user, senha, email))
-                    self.cad_btn.hide()
-                    self.regis_btn.show()
-                    self.enter_btn.show()
-                    self.email.hide()
-                    self.label_email.hide()
-                    self.cancel_btn.hide()
-                    self.usuario.clear()
-                    self.senha.clear()
-                    self.email.clear()
+            if user != '' and email != '':
+                exist = fun_dao.selectOne(user)
+                if exist == None:
+                    if valid.validate(senha, 14)[0] == QValidator.Acceptable:
+                        if len(str(senha)) >= 8:
+                            fun_dao.regis(Funcionario(None, user, senha, email))
+                            self.cad_btn.hide()
+                            self.regis_btn.show()
+                            self.enter_btn.show()
+                            self.email.hide()
+                            self.label_email.hide()
+                            self.cancel_btn.hide()
+                            self.usuario.clear()
+                            self.senha.clear()
+                            self.email.clear()
+                        else:
+                            QMessageBox.about(self, "Erro!", "A senha está muito fraca.")
+                    else:
+                        QMessageBox.about(self, "Erro!", "Senha inválida.")
                 else:
-                    QMessageBox.about(self, "Erro!", "A senha está muito fraca.")
+                    QMessageBox.warning(self, "Erro!", "Conta já existente.")
             else:
-                QMessageBox.about(self, "Erro!", "Senha inválida.")
+                QMessageBox.warning(self, "Erro!", "Preencha todos os campos.")
         except Exception as e:
             print(e)
         

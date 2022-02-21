@@ -5,7 +5,7 @@ def addBook(book):
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """INSERT INTO Book (nome, qt, valor) VALUES (?,?,?,?)"""
+        sql = """INSERT INTO Book (img, nome, qt, autor, valor, exit) VALUES (?,?,?,?,?,0)"""
         cursor.execute(sql, book.getBook())
         conn.commit()
     except Exception as i:
@@ -29,7 +29,9 @@ def editBook(book):
     try:
         conn = database.connect()
         cursor = conn.cursor()
-        sql = """UPDATE Book SET nome=?, qt=?, valor=? WHERE id=?"""
+        sql = """UPDATE Book SET img=?, nome=?, qt=?, autor=?, valor=? WHERE id=?"""
+        b = book.getBook()
+        b.append(book.id)
         cursor.execute(sql, book.id)
         conn.commit()
     except Exception as a:
@@ -46,7 +48,7 @@ def selectAll():
         cursor.execute(sql)
         result = cursor.fetchall()
         for note in result:
-            new = Book(note[0], note[1], note[2], note[3], note[4])
+            new = Book(note[0], note[1], note[2], note[3], note[4], note[5])
             lb.append(new)
     except Exception as e:
         print(e)

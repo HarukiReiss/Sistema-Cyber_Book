@@ -1,6 +1,7 @@
 from qt_core import *
 from model.cliente import Cliente
 import model.cliente_dao as cliente_dao
+
 class ClientePage(QWidget):
     c_list = []
     c_select = None
@@ -17,6 +18,8 @@ class ClientePage(QWidget):
         self.tabela_clientes.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
         self.lupa.clicked.connect(self.buscar)
         self.cancel_edit_btn.clicked.connect(self.cancelEdit)
+        self.cpf.setMaxLength(11)
+        self.telefone.setMaxLength(11)
         
         self.load()
         self.tabela_clientes.clicked.connect(self.selectedC)
